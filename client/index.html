@@ -3,24 +3,86 @@
     <meta charset="utf-8"/>
     <title>ECDSA Exchange</title>
     <script type="module" src="index.js"></script>
+    <link rel="stylesheet" href="css/uicons-regular-straight.css">
   </head>
   <body>
     <div class="components">
-      <div class="wallet">
-        <h1> Your Wallet </h1>
-        <input type="text" id="exchange-address" placeholder="Your Address" />
-        <div id="balance">
-          0
-        </div>
+      <h1>The Elliptic Exchange</h1>
+
+      <div id="wallet">
+        <table>
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan>
+                <h2>Account Information</h2>
+              </td>
+              <td rowspan="2" id="balance-td">
+                <span id="balance">0</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" id="exchange-address" placeholder="Your Username (e.g. Alice)" />
+              </td>
+            </tr>
+          </tbody>
+        </table>        
       </div>
 
-      <div class="send">
-        <h1> Send Amount </h1>
-        <input type="text" id="send-amount" placeholder="Send Amount" />
-        <input type="text" id="recipient" placeholder="Recipient" />
-        <div class="button" id="transfer-amount">
-          Transfer Amount
-        </div>
+      <div id="send">
+        <table>
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="2">
+                <h2>Send Ethereum</h2>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <input type="text" id="send-amount" placeholder="Amount (e.g. 5)" />
+              </td>
+              <td>
+                <input type="text" id="recipient" placeholder="Recipient (e.g. Bob)" />
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                <p>Please use your offline ECDSA signer to sign the following message:<br><br>
+                <span id="code">{ "amount": <span id="sample-amount"></span>, "recipient": "<span id="sample-recipient"></span>" }</span>&nbsp;<i id="copy-button" class="fi fi-rs-duplicate" title="Copy to Clipboard"></i></p>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                <input type="text" id="signature-r" placeholder="Signature R" class="long" size="50"/>
+                &nbsp;<i id="refresh-r" class="fi fi-rs-refresh" title="Clear"></i>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <input type="text" id="signature-s" placeholder="Signature S" class="long" size="50"/>
+                &nbsp;<i id="refresh-s" class="fi fi-rs-refresh" title="Clear"></i>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div id="transfer-amount">
+                  Confirm and Send
+                </div>
+              </td>
+              <td>
+                <div id="error"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </body>
